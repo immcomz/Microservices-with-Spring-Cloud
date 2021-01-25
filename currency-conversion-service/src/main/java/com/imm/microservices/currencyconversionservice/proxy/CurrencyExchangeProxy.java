@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.imm.microservices.currencyconversionservice.bean.CurrencyConversion;
 
 //set FeignClient to use proxy to currency-exchange-service and url
-@FeignClient(name="currency-exchange-service", url="localhost:8000")
+
+//@FeignClient(name="currency-exchange-service", url="localhost:8000")
+//Now Feign Client will call the rest api from naming server
+@FeignClient(name="currency-exchange-service")
 public interface CurrencyExchangeProxy {
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
