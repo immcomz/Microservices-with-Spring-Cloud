@@ -23,12 +23,16 @@ public class CircuitBrakerController {
 	@GetMapping("/sample-api")
 	//any Failures retry and finally fallback to default api response
 	@Retry(name = "sample-api", fallbackMethod = "hardcodedResponse")
+	//@CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse")
+	//@RateLimiter(name="default")
+	@Bulkhead(name="sample-api")
 	public String sampleApi() {
 		logger.info("Sample api call received");
-		//create a api get call for dummy end point
-		ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url", 
-					String.class);
-	return forEntity.getBody();
+		//create a api get call for dummy end point to demostrate retry/circuitbraker ex
+//		ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url", 
+//					String.class);
+//	return forEntity.getBody();
+		return "sample-api";
 		
 	}
 	
