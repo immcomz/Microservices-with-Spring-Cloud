@@ -11,6 +11,8 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class LoggingFilter implements GlobalFilter{
+	
+	//This is the place to Authentications and Authorizations shoild be implemented
 
 	private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
 	
