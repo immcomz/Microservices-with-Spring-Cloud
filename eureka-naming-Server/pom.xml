@@ -61,6 +61,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<!-- dockerUserName/ImageName-ArtifactID:Version -->
+						<name>immcomz/microservices-${project.artifactId}:${project.version}</name>
+						<!--ADDING A POLICY TO IMAGE WHEN PULLING IMAGE, PULLING FROM DOCKER HUB IF COULDNT FIND LOCALLY -->
+						<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+					</image>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
